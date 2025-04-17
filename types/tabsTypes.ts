@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import { ImageSourcePropType } from "react-native";
 
 export type TabIconProps = {
@@ -11,6 +11,10 @@ export type RouterType = {
   options: {
     title: string;
     headerShown: boolean;
-    tabBarIcon: ({ focused }: { focused: boolean }) => ReactNode;
+    tabBarIcon: (props: {
+      focused: boolean;
+      color: string;
+      size?: number;
+    }) => ReactElement;
   };
 };
