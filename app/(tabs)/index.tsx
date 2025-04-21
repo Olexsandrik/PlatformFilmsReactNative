@@ -1,11 +1,13 @@
 import { MoviesCard } from "@/components/MoviesCard.tsx";
+import { ScreenWrapper } from "@/components/ScreenWrapper";
 import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
+
 import { fetchPopularMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
-
 import { useRouter } from "expo-router";
+
 import {
   ActivityIndicator,
   FlatList,
@@ -16,8 +18,6 @@ import {
 } from "react-native";
 
 export default function Index() {
-  const router = useRouter();
-
   const {
     data: movies,
     loading: moviesLoading,
@@ -28,6 +28,7 @@ export default function Index() {
     })
   );
 
+  const router = useRouter();
   return (
     <View className="flex-1 bg-primary">
       <Image source={images.bg} className="absolute w-full z-0" />
@@ -55,7 +56,9 @@ export default function Index() {
         ) : (
           <View className="flex-1 mt-5">
             <SearchBar
-              onPress={() => router.push("/search")}
+              onPress={() => {
+                router.push("/search");
+              }}
               placeholder="Search for a movie"
             />
 
